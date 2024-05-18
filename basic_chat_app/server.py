@@ -1,10 +1,9 @@
 
 import socket
 import threading
-
 # Server setup
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind(('127.0.0.1', 5555))  # Use your IP address and port
+server.bind(('0.0.0.0', 5555))  # Use your IP address and port
 server.listen()
 
 clients = []
