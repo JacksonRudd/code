@@ -1,24 +1,23 @@
-@description('The kubernetes cluster for running several of my applications')
+@description('The Kubernetes cluster for running several of my applications')
 resource aksCluster 'Microsoft.ContainerService/managedClusters@2024-02-01' = {
-  name: 'name'
+  name: 'klab'
   location: resourceGroup().location
   identity: {
     type: 'SystemAssigned'
   }
   properties: {
-   dnsPrefix: 'dnsprefix'
+    dnsPrefix: 'dnsprefix'
     enableRBAC: true
-    // not sure if I need this yet.
-    // servicePrincipalProfile: {
-    //   clientId:'msi'
-    // }
     agentPoolProfiles: [
       {
-        name: 'agentpool'
-        count: 3
-        vmSize: 'Standard_DS2_v2'
+        name: 'small'
+        count: 1 // Start with a single node
+        vmSize: 'Standard_B2s' // Use a cheaper VM size
         osType: 'Linux'
         mode: 'System'
+        enableAutoScaling: true
+        minCount: 1
+        maxCount: 3
       }
     ]
   }

@@ -17,7 +17,7 @@
 // }
 
 resource myAKS 'Microsoft.ContainerService/managedClusters@2024-02-01' existing = {
-  name: 'name'
+  name: 'klab'
 }
 resource myACR 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' existing = {
   name: 'genacr222'
