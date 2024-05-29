@@ -15,7 +15,7 @@ class ChatClient:
                 if message == 'NICK':
                     self.client.send(self.nickname.encode('utf-8'))
                 else:
-                    print(message)
+                    print(message, '.')
             except:
                 print('An error occurred!')
                 self.client.close()
@@ -34,9 +34,8 @@ class ChatClient:
         write_thread.start()
 
 if __name__ == "__main__":
-    host = '127.0.0.1'
-    port = 5555
-    nickname = input('Choose your nickname: ')
-
+    host = '13.86.213.160'
+    port = 5000
+    nickname = 'jim' #input('Choose your nickname: ')
     client = ChatClient(host, port, nickname)
     client.start()
